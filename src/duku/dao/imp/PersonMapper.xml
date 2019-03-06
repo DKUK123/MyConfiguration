@@ -1,0 +1,26 @@
+<!DOCTYPE mapper    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="duku.dao.PersonDao">
+	<resultMap type="duku.entity.Person" id="abc">
+	<id property="id" column="id" />
+	<result property="username" column="username" />
+	<result property="password" column="password" />
+</resultMap>
+<sql id="ffff">
+	${tablename}`id`
+	,${tablename}`username`
+	,${tablename}`password`
+</sql>
+
+<insert id="add">
+	INSERT INTO `person`(id,username,password)
+		VALUES (#{id},#{username},#{password});
+</insert>
+
+<select id="select">
+	select
+	<include refid="ffff">
+		<property name="tablename" value="" />
+	</include>
+	from `person` 
+</select>
+</mapper>
